@@ -25,7 +25,10 @@ services:
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
     depends_on:
       - postgres
 volumes:
   db_data:
+  n8n_data:
