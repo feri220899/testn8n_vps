@@ -11,6 +11,8 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - shared_network
   n8n:
     image: n8nio/n8n
     environment:
@@ -38,6 +40,11 @@ services:
       - n8n_data:/home/node/.n8n
     depends_on:
       - postgres
+    networks:
+      - shared_network
 volumes:
   db_data:
   n8n_data:
+networks:
+  shared_network:
+    driver: bridge
